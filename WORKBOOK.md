@@ -1,10 +1,9 @@
 # Workbook
 
-The working Excel workbook used during this stage contains the source data,
-Power Query outputs, recovery pipeline, manual overrides, suspected variants,
-and final cleaned output.
+The working Excel workbook used during this stage contains the source data, Power Query outputs, recovery pipeline, manual overrides, suspected variants, and final cleaned output.
 
-For GitHub, the repository exposes the Power Query implementation and compact
-derived result tables rather than committing the full 541,910-row workbook.
+The complete workbook is kept locally and is not included in this repository. The original UCI Online Retail dataset used by the workbook is also not redistributed here.
 
-The workbook can be retained locally as the working artifact.
+Instead, the repository exposes the Power Query implementation, methodology, and selected derived result tables needed to understand and review the Description Recovery & Validation process.
+
+For the dataset source, citation, and licensing information, see **[`DATASET/`](DATASET.md)**.
