@@ -21,9 +21,9 @@ Two thresholds used in the pipeline (a 0.9 confidence score for automatic resolu
 
 ## What's in This Repo
 
-- **[`methodology/`](./methodology)** — the full write-up: every bug found, every threshold and why, every judgment call and its reasoning.
-- **[`power-query-code/`](./power-query-code)** — the actual M code behind the pipeline, split into the stages described in the methodology (normalization, junk-entry detection, confidence scoring, final classification).
-- **[`data-sample/`](./data-sample)** — a before/after CSV sample showing recovered rows across all four outcome categories.
+- **[`Methodology/`](./Methodology)** — the full write-up: every bug found, every threshold and why, every judgment call and its reasoning.
+- **[`Power-Query-Code/`](./Power-Query-Code)** — the actual M code behind the pipeline, split into the stages described in the methodology (normalization, junk-entry detection, confidence scoring, final classification).
+- **[`Data-Sample/`](./Data-Sample)** — a before/after CSV sample showing recovered rows across all four outcome categories.
 
 ## Tools
 
