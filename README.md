@@ -24,8 +24,8 @@ Two thresholds used in the pipeline (a 0.9 confidence score for automatic resolu
 - **[`Methodology/`](./Methodology)** — the full write-up: every bug found, every threshold and why, every judgment call and its reasoning.
 - **[`Power-Query-Code/`](./Power-Query-Code)** — the actual M code behind the pipeline, split into the stages described in the methodology (normalization, junk-entry detection, confidence scoring, final classification).
 - **[`Data-Sample/`](./Data-Sample)** — a before/after CSV sample showing recovered rows across all four outcome categories.
-- **[`DATASET Source/`](./DATASET)** _ includes the webpage for the dataset, license, and citation.
-- **[`About the WORKBOOK/`](./WORKBOOK)** _ refers to what the workbook includes and what the git repo shows from it rather than exposing the whole source 
+- **[`DATASET/`](./DATASET)** _ includes the webpage for the dataset, license, and citation.
+- **[`WORKBOOK/`](./WORKBOOK)** _ refers to what the workbook includes and what the git repo shows from it rather than exposing the whole source 
 
 ## Tools
 
