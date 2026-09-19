@@ -15,7 +15,7 @@ Every product code in the dataset was classified into one of four outcomes:
 | Auto-Accept | `3733` | Single or clearly-dominant description, recovered automatically |
 | Manual Override | `76` | Ambiguous, resolved by individual review |
 | Suspected Multi-Variant | `19` | Multiple real descriptions likely represent genuinely different products sharing one code — left unresolved by design |
-| Unrecoverable | `165` | No real description exists anywhere in the data for this code |
+| Unrecoverable | `130` | No real description exists anywhere in the data for this code |
 
 Two thresholds used in the pipeline (a 0.9 confidence score for automatic resolution, a 50% price-divergence flag for suspected variants) were not assumed — both were derived by sorting the real data and finding a genuine gap in the distribution.
 
