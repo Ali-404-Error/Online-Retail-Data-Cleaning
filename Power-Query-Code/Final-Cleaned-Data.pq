@@ -1,12 +1,13 @@
 let
     Source = Table1,
-    #"Changed Type" = Table.TransformColumnTypes(Source,{{"StockCode", type text}, {"Description", type text}, {"InvoiceDate", type datetime}}),
+    #"Changed Type" = Table.TransformColumnTypes(Source,{{"StockCode", type text}, {"Description", type text}, {"InvoiceDate", type datetime}, {"InvoiceNo", type text}}),
     #"Uppercased Text" = Table.TransformColumns(#"Changed Type",{{"StockCode", Text.Upper, type text}}),
     #"Trimmed Text" = Table.TransformColumns(#"Uppercased Text",{{"StockCode", Text.Trim, type text}}),
     #"Uppercased Text1" = Table.TransformColumns(#"Trimmed Text",{{"Description", Text.Upper, type text}}),
     #"Trimmed Text1" = Table.TransformColumns(#"Uppercased Text1",{{"Description", Text.Trim, type text}}),
     #"Added HasBlankDescription" = Table.AddColumn(#"Trimmed Text1", "HasBlankDescription", each if [Description] = null then true else false),
-    #"Added IsOperationalNote" = Table.AddColumn(#"Added HasBlankDescription", "IsOperationalNote", each let
+    #"Added TransactionType" = Table.AddColumn(#"Added HasBlankDescription", "TransactionType", each if Text.StartsWith([InvoiceNo], "C") then "Customer Cancellation" else if [Quantity] < 0 then "Internal write off" else if [UnitPrice] <= 0 then "Non-Standard Pricing" else "sale"),
+    #"Added IsOperationalNote" = Table.AddColumn(#"Added TransactionType", "IsOperationalNote", each let
     exactWords = {"CHECK"},
     containsWords = {"?", "AMAZON", "FOUND", "ADJUSTMENT", "WRONGLY", "DAMAGED", "RETURNED", "TEST", "MAILOUT", "PUT", "MARKED", "CODED"},
     hasExactMatch = if [Description] = null then false else List.AnyTrue(List.Transform(exactWords, (w) => [Description] = w)),
