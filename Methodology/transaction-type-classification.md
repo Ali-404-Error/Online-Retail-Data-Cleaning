@@ -25,7 +25,7 @@ These are the counts for the points needed to be checked for starters
 
 **Zero or negative price with positive quantity**. Of the 2,517 rows with `UnitPrice <= 0`, there was a total count of 1,181 rows that have positive quantity. A transaction happened, no money changed hands. This group isn't uniform as in:
 
-- 1,141 rows have no `CustomerID`. `Description` is a mix of real products, operational notes, bad debts-adjustments, and blanks.
+- 1,141 rows have no `CustomerID`. `Description` is a mix of real products, operational notes, bad-debts adjustments, and blanks.
 - 40 rows have real customers with their IDs typed in. Including real products, 6 rows with `StockCode` "M" / `Description` "MANUAL", and 1 row with `StockCode` "PADS". None were carrying a prefixed-`C`.
 
 ## 3. Classification
@@ -42,7 +42,7 @@ else "sale"
 | Order | Test | Category | Reasoning |
 |---|---|---|---|
 | 1 | `InvoiceNo` starts with `C` | Customer Cancellation | All 9,288 such rows have negative quantity, so no second condition needed |
-| 2 | `Quantity < 0` | Internal write-off | After step 1, every remaining row was shown to have blank `CustomerID` and zero `UnitPrice` |
+| 2 | `Quantity < 0` | Internal write off | After step 1, every remaining row was shown to have blank `CustomerID` and zero `UnitPrice` |
 | 3 | `UnitPrice <= 0` | Non-Standard Pricing | After step 2, what is left has positive quantity |
 | 4 | Otherwise | sale | Positive quantity and price, no `C` prefix |
 
@@ -61,7 +61,7 @@ The classification uses only `InvoiceNo`, `Quantity`, and `UnitPrice`. The use o
 Three reconciliation checks, all matching the counts from the investigation stage:
 
 1. The four types sum to the full rows count.
-2. Cancellations plus write-offs (9,288 + 1336) equal the original negative-quantity count of 10,624.
+2. Cancellations plus write-offs (9,288 + 1,336) equal the original negative-quantity count of 10,624.
 3. Write-offs plus Non-Standard Pricing (1,336 + 1,181) equal the original `UnitPrice <=0` count of 2,517.
 
 ## 5. Cancellations offset sales: USE NET QUANTITY
@@ -77,7 +77,7 @@ A flag marking sales that were reversed later was considered to be built but it 
 
 - **Netting already handles this situation**. Summing quantity across both types cancels the pair without any row-to-row matching.
 - **Matching is unreliable**. The sale and its cancellation share no key. A match would have to use `StockCode`, `CustomerID` and negated quantity. Partial returns would not match, and a return months later cannot be found with a same-day shortcut.
-- **The check did not show widesrpread reversal**. Among the 20 `sale` rows with large units (2,000 or more), about 4 rows had cancellations on the same day next to them. This is a low bound as the check only sees cancellations adjacent in the sorted view, so a reversal on another date would be missed. It does not support a percentage claim, and does not change the decision since netting works regardless of the date.
+- **The check did not show widespread reversal**. Among the 20 `sale` rows with large units (2,000 or more), about 4 rows had cancellations on the same day next to them. This is a low bound as the check only sees cancellations adjacent in the sorted view, so a reversal on another date would be missed. It does not support a percentage claim, and does not change the decision since netting works regardless of the date.
 
 ## 7. Relationship to `IsOperationalNote`
 
