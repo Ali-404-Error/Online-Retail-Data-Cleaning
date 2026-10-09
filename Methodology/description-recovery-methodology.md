@@ -33,7 +33,7 @@ A large share of apparent "ambiguity" turned out to be operational/internal entr
 
 `IsOperationalNote` flags a row true if:
 - `CustomerID` is blank **and** `UnitPrice = 0` **and** `Quantity < 0` (the behavioral signature of an internal adjustment), **or**
-- the description text contains a `?`, or matches a curated list of junk-indicator words compiled by direct inspection of the data (`CHECK`†, `AMAZON`†, `FOUND`, `ADJUSTMENT`, `WRONGLY`, `DOTCOM`†, `DAMAGED`, `RETURNED`, `TEST`, `MAILOUT`, `PUT`, `MARKED`, `CODED`).
+- the description text contains a `?`, or matches a curated list of junk-indicator words compiled by direct inspection of the data (`CHECK`†, `AMAZON`†, `FOUND`, `ADJUSTMENT`, `WRONGLY`, `DAMAGED`, `RETURNED`, `TEST`, `MAILOUT`, `PUT`, `MARKED`, `CODED`, `SECTION`).
 
 † These three words were initially added as broad substring matches, then had to be corrected after discovering they also appear inside legitimate product names (e.g. `"BROWN CHECK CAT DOORSTOP"`, `"AMAZONITE"`-style items, real `dotcomgiftshop.com` storefront sales with genuine prices). `CHECK` was narrowed to an **exact match** rather than a substring match; `DOTCOM` was removed from the junk list entirely once its transactions were confirmed to be legitimate (just zero-priced in some cases, which is handled separately by the price-divergence check, not by exclusion).
 
