@@ -9,7 +9,7 @@ let
     #"Added TransactionType" = Table.AddColumn(#"Added HasBlankDescription", "TransactionType", each if Text.StartsWith([InvoiceNo], "C") then "Customer Cancellation" else if [Quantity] < 0 then "Internal write off" else if [UnitPrice] <= 0 then "Non-Standard Pricing" else "sale"),
     #"Added IsOperationalNote" = Table.AddColumn(#"Added TransactionType", "IsOperationalNote", each let
     exactWords = {"CHECK"},
-    containsWords = {"?", "AMAZON", "FOUND", "ADJUSTMENT", "WRONGLY", "DAMAGED", "RETURNED", "TEST", "MAILOUT", "PUT", "MARKED", "CODED"},
+    containsWords = {"?", "AMAZON", "FOUND", "ADJUSTMENT", "WRONGLY", "DAMAGED", "RETURNED", "TEST", "MAILOUT", "PUT", "MARKED", "CODED", "SECTION"},
     hasExactMatch = if [Description] = null then false else List.AnyTrue(List.Transform(exactWords, (w) => [Description] = w)),
     hasContainsMatch = if [Description] = null then false else List.AnyTrue(List.Transform(containsWords, (w) => Text.Contains([Description], w)))
 in
