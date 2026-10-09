@@ -6,4 +6,4 @@ The complete workbook is kept locally and is not included in this repository. Th
 
 Instead, the repository exposes the Power Query implementation, methodology, and selected derived result tables needed to understand and review the Description Recovery & Validation process.
 
-For the dataset source, citation, and licensing information, see **[`DATASET/`](DATASET.md)**.
+For the dataset source, citation, and licensing information, see **[`DATASET`](./DATASET.md)**.
