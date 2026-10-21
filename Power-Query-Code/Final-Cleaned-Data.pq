@@ -1,6 +1,6 @@
 let
     Source = Table1,
-    #"Changed Type" = Table.TransformColumnTypes(Source,{{"StockCode", type text}, {"Description", type text}, {"InvoiceDate", type datetime}, {"InvoiceNo", type text}}),
+    #"Changed Type" = Table.TransformColumnTypes(Source,{{"StockCode", type text}, {"Description", type text}, {"InvoiceDate", type datetime}, {"InvoiceNo", type text}, {"CustomerID", type text}}),
     #"Uppercased Text" = Table.TransformColumns(#"Changed Type",{{"StockCode", Text.Upper, type text}}),
     #"Trimmed Text" = Table.TransformColumns(#"Uppercased Text",{{"StockCode", Text.Trim, type text}}),
     #"Uppercased Text1" = Table.TransformColumns(#"Trimmed Text",{{"Description", Text.Upper, type text}}),
