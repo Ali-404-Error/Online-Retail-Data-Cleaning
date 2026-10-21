@@ -69,7 +69,7 @@ Blankness is all-or-nothing per invoice. The cause of the gap is not in the data
 ## What's in This Repo
 
 - **[`Methodology/`](./Methodology)**: the full write-up for each stage: every bug found, every threshold and why, every judgment call.
-- **[`Power-Query-Code/`](./Power-Query-Code)**: the M code behind both stages.
+- **[`Power-Query-Code/`](./Power-Query-Code)**: the M code behind all stages.
 - **[`Data-Sample/`](./Data-Sample)**: a CSV sample of the stage 1 output across all four description outcomes.
 - **[`DATASET`](./DATASET.md)**: dataset source, license and citation.
 - **[`WORKBOOK`](./WORKBOOK.md)**: what the local workbook contains and what the repo exposes from it.
