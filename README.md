@@ -6,6 +6,7 @@ Cleaning the [UCI Online Retail dataset](https://archive.ics.uci.edu/dataset/352
 |---|---|---|
 | 1. Description Recovery | Recover missing product descriptions | [methodology](./Methodology/description-recovery-methodology.md) |
 | 2. Transaction Type | Label every row by the kind of event it represents | [methodology](./Methodology/transaction-type-classification.md) |
+| 3. CustomerID gaps | understand the cause and recover missing customerIDs | [methodology](./Methodology/missing-customer-id.md)
 
 ## Stage 1: Description Recovery
 
@@ -46,6 +47,24 @@ Every row was assigned exactly one type, using only `InvoiceNo`, `Quantity` and 
 The four types sum to 541,909 rows, and the counts reconcile against the original negative-quantity (10,624) and non-positive-price (2,517) checks.
 
 One analysis rule came out of this stage: cancellations offset earlier sales, so volume and revenue should be measured on net quantity across both types, not on `sale` alone. A separate "reversed sale" flag was considered and rejected; the methodology explains why.
+
+## Stage 3: CustomerID Gaps
+
+### The Problem
+
+135,080 of 541,909 rows (24.9%) had no `CustomerID`. Customer-level analysis would silently skip a quarter of the data, while deleting those rows or inventing IDs would distort the results. Before deciding, this stage looked at where the gaps sit and how they are structured.
+
+### Results
+
+| Finding | Detail |
+|---|---|
+| Blank rows by type | 132,220 are `sale`, the rest are write offs, zero priced rows and 383 cancellations |
+| Invoices | 3,710 invoices have no customerID, 22,190 have a customer on every line, **none are mixed** |
+| Country | 98.9% of blank sows sit in the UK, most other countries have none |
+| Time | Blank share stays between 16.5% and 37.7% in every month, so it is not a one-off outage |
+| Size | Anonymous invoices average about 36 lines, against about 18 for identified ones |
+
+Blankness is all-or-nothing per invoice. The cause of the gap is not in the data, so the methodolgy states what the evidence supports and no more.
 
 ## What's in This Repo
 
