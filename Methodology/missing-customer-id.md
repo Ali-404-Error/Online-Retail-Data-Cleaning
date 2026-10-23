@@ -124,8 +124,7 @@ Blank share of lines by month:
 
 - All 1,336 `Internal write off` rows have no customer by nature, and 1,141 of the 1,181 `Non-Standard Pricing` rows are blank as well.
 - 383 `Customer Cancellation` rows have no customerID. They cannot be tied to the customer who made the original purchase, so netting cancellations against sales per customer would miss them. Netting per product still includes them.
-- `Customer Cancellation` blank rows show the risk of internal fraud or theft, as no customer is tied to the process, those transactions need to be revised by the managers.
-
+- `Customer Cancellation` blank rows may point to a control weakness, such as refunds that nobody can trace. This stage cannot confirm or rule it out. A test would be to match these 383 rows to earlier sales by StockCode, quantity, and unit price, and see how many have a clear original sale.
 ---
 
 ## 6. Limitations
