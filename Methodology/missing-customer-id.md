@@ -54,7 +54,7 @@ An invoice either has a customer on every line or on none. Blankness is a proper
 
 | | Invoices | Lines | Average lines per invoice |
 |---|---|---|---|
-| Anonymous (Blank) | 3,710 | 125,080 | about 36.4 |
+| Anonymous (Blank) | 3,710 | 135,080 | about 36.4 |
 | Identified | 22,190 | 406,829 | about 18.3 |
 
 Anonymous invoices are 14% of the invoices and 25% of the lines. They average about twice as many lines per invoice as identified ones.
@@ -65,7 +65,7 @@ The blank share by country (line level, which is safe because blankness is all-o
 - **United Kingdom**: 133,600 blank lines out of 495,478 (about 27%), which is 98.9% of all blanks.
 - **Hong Kong**: 288 of 288 lines are blank (100%).
 - **All other countries together**: 1,480 blank lines (1.1% of all blanks). Most countries have none at all (Germany, Spain, The Netherlands, Belgium, Australia).
-- **Countries with some blanks**: Eire 711 of 8,196 (8.7%). Switzerland 125 of 2,002 (2.6%), Palestine 47 of 297 (15.8%).
+- **Countries with some blanks**: Eire 711 of 8,196 (8.7%). Switzerland 125 of 2,002 (6.2%), Palestine 47 of 297 (15.8%).
 - **Unspecified**: 202 of 446 lines are blank (45.3%). `Unspecified` is a placeholder for missing country, it is a separate data gap and is not handled in this stage.
 
 The totals of the country table reconcile to 541,909 rows and 135,080 blank rows.
@@ -86,7 +86,7 @@ Blank share of lines by month:
 | Jul 2011| 39,518 | 12,016 | 30.4% |
 | Aug 2011 | 35,284 | 7,622 | 21.6% |
 | Sep 2011 | 50,226 | 9,404 | 18.7% |
-| Oct 2011 | 60,742 | 10,047 | 16,5% |
+| Oct 2011 | 60,742 | 10,047 | 16.5% |
 | Nov 2011 | 84,711 | 19,113 | 22.6% |
 | Dec 2011 | 25,525 | 7,864 | 30.8% |
 
